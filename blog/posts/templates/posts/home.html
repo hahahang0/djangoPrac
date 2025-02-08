@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block title %}Home Page{% endblock title %}
+{% block body %}
+    <!-- <h1>{{username}}</h1> -->
+    {% for post in posts %}
+    
+    <a href="{% url 'post' post.id %}">
+        <h1>{{forloop.counter}}-{{ post.title|title }}</h1>
+    </a>
+    <p>{{ post.content|truncatewords:1 }}</p>
+    {% empty %}
+    <h1>No posts available</h1>
+    {% endfor %}
+{% endblock body %}
